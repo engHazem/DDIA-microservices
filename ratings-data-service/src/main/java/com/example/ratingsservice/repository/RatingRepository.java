@@ -15,7 +15,7 @@ public class RatingRepository {
     }
     public List<Rating> getRatingsByUserId(String userId) {
 
-        String sql = "SELECT movie_id, rating, user_id FROM rating WHERE user_id = ?";
+        String sql = "SELECT movie_id, rating, user_id FROM ratings WHERE user_id = ?";
 
         return jdbcTemplate.query(
                 sql,

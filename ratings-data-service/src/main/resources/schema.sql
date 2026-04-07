@@ -7,3 +7,4 @@ CREATE TABLE IF NOT EXISTS ratings(
     rating INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
