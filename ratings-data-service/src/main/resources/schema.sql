@@ -1,0 +1,9 @@
+use ratings_db;
+
+CREATE TABLE IF NOT EXISTS ratings(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100) NOT NULL,
+    movie_id VARCHAR(100) NOT NULL,
+    rating INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
