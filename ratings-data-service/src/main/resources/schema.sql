@@ -7,12 +7,7 @@ CREATE TABLE IF NOT EXISTS ratings(
     rating INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
--- insert records 
-USE ratings_db;
 
--- Insert 100 users with random ratings
-INSERT INTO ratings (user_id, movie_id, rating)
-VALUES
 -- -- Loop over users
 -- USE ratings_db;
 
