@@ -1,6 +1,8 @@
 package com.example.movieinfoservice.models;
 
-public class MovieSummary {
+import java.io.Serializable;
+
+public class MovieSummary implements Serializable {
     private String id;
     private String title;
     private String overview;
