@@ -3,6 +3,7 @@ package com.example.ratingsservice.repository;
 import com.example.ratingsservice.models.Rating;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository
@@ -13,6 +14,7 @@ public class RatingRepository {
     public RatingRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     public List<Rating> getRatingsByUserId(String userId) {
 
         String sql = "SELECT movie_id, rating, user_id FROM ratings WHERE user_id = ?";
@@ -24,6 +26,21 @@ public class RatingRepository {
                         rs.getInt("rating")
                 ),
                 userId
+        );
+    }
+
+    public List<String> getTop10Movies() {
+        String sql = """
+                    SELECT movie_id
+                    FROM ratings
+                    GROUP BY movie_id
+                    ORDER BY AVG(rating) DESC, COUNT(*) DESC
+                    LIMIT 10
+                """;
+
+        return jdbcTemplate.query(
+                sql,
+                (rs, rowNum) -> rs.getString("movie_id")
         );
     }
 }
