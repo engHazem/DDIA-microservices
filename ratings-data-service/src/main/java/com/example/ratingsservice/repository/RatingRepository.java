@@ -17,11 +17,12 @@ public class RatingRepository {
 
     public List<Rating> getRatingsByUserId(String userId) {
 
-        String sql = "SELECT movie_id, rating, user_id FROM ratings WHERE user_id = ?";
+        String sql = "SELECT movie_id, rating, id FROM ratings WHERE user_id = ?";
 
         return jdbcTemplate.query(
                 sql,
                 (rs, rowNum) -> new Rating(
+                        rs.getLong("id"),
                         rs.getString("movie_id"),
                         rs.getInt("rating")
                 ),
@@ -38,9 +39,11 @@ public class RatingRepository {
                     LIMIT 10
                 """;
 
-        return jdbcTemplate.query(
+        List<String>  x= jdbcTemplate.query(
                 sql,
                 (rs, rowNum) -> rs.getString("movie_id")
         );
+        System.out.println(x);
+        return x;
     }
 }

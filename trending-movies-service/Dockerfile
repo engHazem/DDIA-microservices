@@ -4,15 +4,12 @@ LABEL authors="yousef"
 
 WORKDIR /app
 
-# Copy pom.xml first for dependency caching
 COPY pom.xml .
 RUN mvn dependency:resolve
 
 # Copy source code
 COPY src ./src
 
-# Expose your app port
-EXPOSE 8082
+EXPOSE 9091
 
-# Run Spring Boot app
 CMD ["mvn", "spring-boot:run"]
